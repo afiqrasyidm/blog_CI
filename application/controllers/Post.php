@@ -44,6 +44,29 @@ class Post extends CI_Controller {
 			$this->load->view('post/get', $data);
 
 		}
+		public function update($id){
+			
+			
+			$this->load->helper('form');
+			$this->load->library('form_validation');
+
+
+			$this->form_validation->set_rules('judul', 'Judul', 'required');
+			$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+
+			if ($this->form_validation->run() === FALSE)
+			{
+		
+				$data['post_data'] = $this->post_model->get($id);	
+				$this->load->view('post/update', $data);
+
+			}
+			else
+			{
+				$this->post_model->update();
+				 redirect('post/get/'.$id); 
+			}
+		}
 		
 		
 			

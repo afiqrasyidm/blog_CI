@@ -22,6 +22,24 @@ class Post_model extends CI_Model {
 
 			return $this->db->insert('post', $data);
 		}
+				
+		public function update()
+		{
+			$this->load->helper('url');
+
+		
+			$data = array(
+				'judul' => $this->input->post('judul'),
+				'deskripsi' => $this->input->post('deskripsi')
+			);
+			
+			
+			
+			$this->db->where('post_id',  $this->input->post('post_id'));
+			$this->db->update('post',$data);
+
+		
+		}
 		
 		public function get($id){
 						    
