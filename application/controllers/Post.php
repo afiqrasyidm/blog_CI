@@ -7,7 +7,10 @@ class Post extends CI_Controller {
                 $this->load->model('post_model');
                 $this->load->helper('url_helper');
         }
-		
+		public function index(){
+		    $data['posts_data'] = $this->post_model->get_all();
+			$this->load->view('post/index', $data);
+		}
         public function create()
         {
 		
@@ -30,5 +33,19 @@ class Post extends CI_Controller {
 				$this->load->view('post/success_post');
 			}
         }
+		public function get($id){
+						    
+			$data['post_data'] = $this->post_model->get($id);
+			
+			if (empty($data['post_data']))
+			{
+					show_404();
+			}
+			$this->load->view('post/get', $data);
+
+		}
+		
+		
+			
 
 }

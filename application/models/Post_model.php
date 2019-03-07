@@ -5,6 +5,11 @@ class Post_model extends CI_Model {
         {
                 $this->load->database();
         }
+		public function get_all(){
+			 $query = $this->db->get('post');
+             return $query->result_array();
+		}
+		
 		public function create()
 		{
 			$this->load->helper('url');
@@ -17,4 +22,14 @@ class Post_model extends CI_Model {
 
 			return $this->db->insert('post', $data);
 		}
+		
+		public function get($id){
+						    
+			$query = $this->db->get_where('post', array('post_id' => $id));
+			
+			return $query->row_array();
+				
+		}
+		
+		
 }
