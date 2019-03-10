@@ -67,6 +67,13 @@ class Post extends CI_Controller {
 				 redirect('post/get/'.$id); 
 			}
 		}
+		public function delete($id){
+				
+			$data['post_data'] = $this->post_model->delete($id);
+			$this->load->view('post/delete_post');
+			
+			
+		}
 		
 		
 			

@@ -7,6 +7,7 @@
                 <?php echo $post_data['deskripsi']; ?>
         </div>
 		<p><a href="<?php echo site_url('post/get/'.$post_data['post_id']); ?>">Lihat Post</a></p>
+		
       
 <?php endforeach; ?>
 

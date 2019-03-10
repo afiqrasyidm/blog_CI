@@ -48,6 +48,10 @@ class Post_model extends CI_Model {
 			return $query->row_array();
 				
 		}
+		public function delete($id){
+			$this->db->where('post_id', $id);
+			$this->db->delete('post');
+		}
 		
 		
 }
